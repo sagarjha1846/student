@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import EditStudent from "./Comps/EditStudent";
+import Form from "./Comps/Form";
+import Table from "./Comps/Table";
 
 function App() {
+  const [isEditClicked, setisEditClicked] = useState(false);
+  const [studentToBeUpdated, setStudentToBeUpdated] = useState();
+  const [studentID, setStudentID] = useState();
+  console.log(studentID);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="appBody">
+        {isEditClicked === true ? (
+          <EditStudent
+            studentID={studentID}
+            studentToBeUpdated={studentToBeUpdated}
+            setStudentToBeUpdated={setStudentToBeUpdated}
+          />
+        ) : (
+          <Form />
+        )}
+
+        <Table
+          setisEditClicked={setisEditClicked}
+          setStudentID={setStudentID}
+        />
+      </div>
     </div>
   );
 }
