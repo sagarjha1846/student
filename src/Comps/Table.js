@@ -31,7 +31,7 @@ function Table({ setisEditClicked, setStudentID }) {
   }, [student]);
 
   function deleteStudent(id) {
-    axios.fetch("http://localhost:5000/delete/" + id);
+    axios.delete("http://localhost:5000/delete/" + id);
     alert("deleted");
   }
 
